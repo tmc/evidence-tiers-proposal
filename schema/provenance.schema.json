@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/AI-Safety-Commons/evidence-tiers/schema/provenance.schema.json",
+  "title": "evidence/provenance 0.1",
+  "description": "One provenance record. Validate each record separately when a sidecar contains an array.",
+  "type": "object",
+  "required": ["type", "version", "tier"],
+  "properties": {
+    "type": {"const": "evidence/provenance"},
+    "version": {"const": "0.1"},
+    "tier": {"enum": [1, 2, 3]},
+    "notes": {"type": "string"},
+    "source_url": {"$ref": "#/$defs/url"},
+    "captured_at": {"$ref": "#/$defs/timestamp"},
+    "captured_by": {"$ref": "#/$defs/text"},
+    "method": {"$ref": "#/$defs/text"},
+    "sha256": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64,
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "SHA-256 of the described artifact bytes, not this provenance record; required for tier 1 and optional for other tiers."
+    },
+    "redirect_chain": {"type": "array", "items": {"$ref": "#/$defs/url"}},
+    "surface_timestamp": {"anyOf": [{"$ref": "#/$defs/timestamp"}, {"type": "null"}]},
+    "origin": {"enum": ["surface", "investigator", "synthesis", "unknown"]},
+    "inputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/artifactReference"},
+      "description": "Artifacts used to derive this artifact or establish its origin; inputs may belong to any tier."
+    },
+    "author": {"$ref": "#/$defs/text"},
+    "ran_at": {"$ref": "#/$defs/timestamp"},
+    "investigator_probe": {"type": "boolean"},
+    "touched": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/url"}},
+    "wrote": {"type": "boolean"},
+    "written_at": {"$ref": "#/$defs/timestamp"},
+    "generated_by": {"$ref": "#/$defs/text"},
+    "operator": {"$ref": "#/$defs/text"},
+    "claim": {"$ref": "#/$defs/text"},
+    "grade": {"enum": ["demonstrated", "asserted", "open", "rejected"]},
+    "cites": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/citation"}}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"tier": {"const": 1}}, "required": ["tier"]},
+      "then": {"required": ["source_url", "captured_at", "captured_by", "method", "sha256", "surface_timestamp", "origin"]}
+    },
+    {"if": {"properties": {"tier": {"const": 2}}, "required": ["tier"]}, "then": {"required": ["author"]}},
+    {
+      "if": {"anyOf": [{"required": ["ran_at"]}, {"required": ["investigator_probe"]}, {"required": ["touched"]}, {"required": ["wrote"]}]},
+      "then": {"properties": {"tier": {"const": 2}}, "required": ["ran_at", "investigator_probe"]}
+    },
+    {
+      "if": {"properties": {"investigator_probe": {"const": true}}, "required": ["investigator_probe"]},
+      "then": {"required": ["touched", "wrote"]}
+    },
+    {
+      "if": {"anyOf": [{"required": ["touched"]}, {"required": ["wrote"]}]},
+      "then": {"properties": {"investigator_probe": {"const": true}}}
+    },
+    {
+      "if": {"properties": {"tier": {"const": 3}}, "required": ["tier"]},
+      "then": {"required": ["author", "written_at", "claim", "grade", "cites"]}
+    },
+    {
+      "if": {"properties": {"origin": {"enum": ["investigator", "synthesis"]}}, "required": ["origin"]},
+      "then": {"required": ["inputs"]}
+    },
+    {
+      "if": {"properties": {"grade": {"const": "demonstrated"}}, "required": ["grade"]},
+      "then": {"properties": {"cites": {"items": {"$ref": "#/$defs/artifactReference"}}}, "required": ["cites"]}
+    }
+  ],
+  "dependentRequired": {"generated_by": ["operator"]},
+  "additionalProperties": false,
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "url": {"type": "string", "format": "uri", "pattern": "^https?://[^\\s/?#]+", "not": {"pattern": "\\s"}},
+    "timestamp": {"type": "string", "format": "date-time", "pattern": "Z$", "not": {"pattern": "\\s"}},
+    "artifactReference": {"type": "string", "pattern": "^(sha256:[0-9a-f]{64}|msg:[0-9]+)$", "not": {"pattern": "\\s"}},
+    "citation": {
+      "anyOf": [{"$ref": "#/$defs/artifactReference"}, {"type": "string", "pattern": "^url:https?://[^\\s/?#]+", "not": {"pattern": "\\s"}}]
+    }
+  }
+}

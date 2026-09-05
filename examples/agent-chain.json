@@ -1,0 +1,86 @@
+{
+  "description": "Illustrative provenance chain only. All identities, times, artifacts and hashes are fictional; no capture, session or generated artifact is supplied. Validate each records element against the provenance schema.",
+  "records": [
+    {
+      "type": "evidence/provenance",
+      "version": "0.1",
+      "tier": 1,
+      "source_url": "https://example.org/wiki/Sandbox",
+      "captured_at": "2026-09-05T18:12:41Z",
+      "captured_by": "example-investigator",
+      "method": "GET; content decoding disabled",
+      "sha256": "9f2b7c4e1a8d3f6b0c5e2a7d4f1b8c3e6a9d2f5b8c1e4a7d0f3b6c9e2a5d8f1b",
+      "surface_timestamp": null,
+      "origin": "unknown",
+      "notes": "Fictional capture bytes; origin has not been established."
+    },
+    {
+      "type": "evidence/provenance",
+      "version": "0.1",
+      "tier": 2,
+      "author": "example-operator",
+      "ran_at": "2026-09-05T18:12:41Z",
+      "investigator_probe": true,
+      "touched": [
+        "https://example.org/wiki/Sandbox"
+      ],
+      "wrote": false,
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "notes": "Fictional capture-session log; no live request occurred."
+    },
+    {
+      "type": "evidence/provenance",
+      "version": "0.1",
+      "tier": 2,
+      "author": "example-operator",
+      "ran_at": "2026-09-05T19:00:00Z",
+      "investigator_probe": false,
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "inputs": [
+        "sha256:9f2b7c4e1a8d3f6b0c5e2a7d4f1b8c3e6a9d2f5b8c1e4a7d0f3b6c9e2a5d8f1b",
+        "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "notes": "Fictional offline session log recording both agents' model revisions, prompts, tool calls and settings. Its content would include synthesis, which retains its tier when quoted or indexed."
+    },
+    {
+      "type": "evidence/provenance",
+      "version": "0.1",
+      "tier": 3,
+      "author": "example-author",
+      "generated_by": "example-analyst-model (placeholder)",
+      "operator": "example-operator",
+      "written_at": "2026-09-05T19:01:00Z",
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "claim": "The apparent timing pattern may indicate automation.",
+      "grade": "open",
+      "inputs": [
+        "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "sha256:9f2b7c4e1a8d3f6b0c5e2a7d4f1b8c3e6a9d2f5b8c1e4a7d0f3b6c9e2a5d8f1b"
+      ],
+      "cites": [
+        "sha256:9f2b7c4e1a8d3f6b0c5e2a7d4f1b8c3e6a9d2f5b8c1e4a7d0f3b6c9e2a5d8f1b"
+      ],
+      "notes": "Fictional first-agent analysis. The session log describes the method; the capture is the proposed evidence."
+    },
+    {
+      "type": "evidence/provenance",
+      "version": "0.1",
+      "tier": 3,
+      "author": "example-author",
+      "generated_by": "example-reviewer-model (placeholder)",
+      "operator": "example-operator",
+      "written_at": "2026-09-05T19:02:00Z",
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "claim": "Automation remains unresolved because the timing pattern has alternative explanations.",
+      "grade": "open",
+      "inputs": [
+        "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "cites": [
+        "sha256:9f2b7c4e1a8d3f6b0c5e2a7d4f1b8c3e6a9d2f5b8c1e4a7d0f3b6c9e2a5d8f1b"
+      ],
+      "notes": "Fictional second-agent conclusion derived from the first analysis. It cites the proposed primary material, not agreement between agents."
+    }
+  ]
+}
