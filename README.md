@@ -7,6 +7,11 @@ from source material, and avoid changing what you study.
 Tier 3 · Open guidance · Author/operator: tmc · Drafted with
 claude-fable-5-1 and GPT-6 (Codex).
 
+Start with existing local mirrors, repository snapshots and saved captures.
+Check their coverage and provenance before proposing any fetch. Do not refresh
+or recrawl them automatically; a missing item is a documented gap, not permission
+to contact the source. Remote mirror access also requires authorization.
+
 Choose a prompt, fill its scope, and give it to your research agent:
 
 - [Examine saved material](prompts/examine.md): work offline with untrusted sources.

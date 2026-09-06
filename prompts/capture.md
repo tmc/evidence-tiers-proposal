@@ -4,12 +4,23 @@ Copy the prompt below and fill the scope. Tier 3: proposed research instructions
 
 ```text
 Purpose: [what must be established]
-Named sources: [explicit URLs or existing captures]
+Available mirrors: [local paths, snapshots and capture manifests]
+Evidence gap: [specific missing artifact or version]
 Constraints: [owner policy, request budget, access restrictions]
 
-Produce a capture plan; make no live requests. Prefer available originals.
-For each necessary request, state its purpose, method, target, expected
-side effects, redirects/subresources, rate and size limits, and storage.
+Check the supplied local mirrors and saved captures first; make no network
+requests or automatic refreshes. Record snapshot dates, coverage, byte hashes
+and whether material is original, transformed or generated. A mirror is not
+independent corroboration or automatically a capture.
+
+If existing data answers the question, return its locators and stop. Otherwise
+state the exact gap and why it matters. Prefer an already-held snapshot from
+another investigator over new collection. Remote mirror retrieval is still
+network access; never trigger archive-on-demand or origin fallback implicitly.
+
+Only propose live capture for a remaining gap. State the necessary targets,
+methods, side effects, redirects/subresources, rate/size limits and storage.
+No proposed request is authorized by this prompt.
 
 GET is not proof of read-only behavior. Exclude counters, edit/save/delete
 paths, message-posting parameters and other mutating endpoints. Apply the
