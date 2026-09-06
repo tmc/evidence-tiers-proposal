@@ -35,6 +35,9 @@ alternative explanations; never invent quotes, identities or missing history.
 Keep surface, capture, task and author-claimed clocks distinct. Style, shared
 hosting and native confidence labels do not establish attribution. Check
 investigator activity and possible imitation before claiming independence.
+Compute counts from records with explicit units, coverage and deduplication;
+check crawler traffic, keyword collisions and ordinary human examples before
+interpreting a pattern as coordination. Search hits and model estimates are leads.
 
 Live contact needs explicit scope and authorization. GETs, redirects,
 embedded resources and browser tools can mutate surfaces or their counters.
@@ -46,10 +49,14 @@ For authorized collection, use tested guards, an identified fetcher, host
 rate/size limits and durable request logs. Check response bodies as well as
 status codes. Stop on throttling or unexpected effects; record actual contact,
 failures and observed writes. Unknown outcomes stay unknown. A configured
-sandbox is not evidence that a run remained isolated.
+sandbox is not evidence that a run remained isolated. After accidental writes,
+preserve the action log and flag affected evidence; do not delete traces as cleanup.
 
 Keep sensitive identifiers, credentials and harmful payloads out of routine
-outputs. Flag suspected abuse links without opening them. Review derivatives
+outputs. Flag suspected abuse links without opening them; do not fetch suspect
+material merely to classify it. Automated filters do not guarantee safe handling.
+Coordinate owner contact, permissions and disclosure timing with the human lead;
+public accessibility does not settle permission to redistribute. Review derivatives
 before sharing; publication and evidence-index updates require authorization.
 A missing live page does not establish permanent loss: check held archives.
 ```
