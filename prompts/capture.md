@@ -4,7 +4,7 @@ Copy the prompt below and fill the scope. Tier 3: proposed research instructions
 
 ```text
 Purpose: [what must be established]
-Available mirrors: [local paths, snapshots and capture manifests]
+Available mirrors: [local paths, snapshots and capture manifests; use the README checkout map]
 Evidence gap: [specific missing artifact or version]
 Constraints: [owner policy, request budget, access restrictions]
 

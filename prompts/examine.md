@@ -4,7 +4,7 @@ Copy the prompt below and fill the scope. Tier 3: proposed research instructions
 
 ```text
 Question: [specific research question]
-Inputs: [local mirrors, saved files and revisions]
+Inputs: [local mirrors, saved files and revisions; use the README checkout map]
 Output location: [separate working directory]
 
 Search supplied mirror indexes and manifests before individual files; report
