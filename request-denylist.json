@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "default": "require_explicit_allow",
+  "rules": [
+    {
+      "host": "api.counterapi.dev",
+      "include_subdomains": true,
+      "path_prefix": "/",
+      "reason": "Counter service: conservative host-wide denial to prevent increments or changes."
+    },
+    {
+      "host": "countapi.mileshilliard.com",
+      "include_subdomains": true,
+      "path_prefix": "/",
+      "reason": "Counter service: conservative host-wide denial to prevent increments or changes."
+    },
+    {
+      "host": "vanderbi.lt",
+      "include_subdomains": true,
+      "path_prefix": "/",
+      "reason": "Known shortener: resolving bare links may register clicks; this also denies stats paths."
+    },
+    {
+      "host": "httpbin.org",
+      "include_subdomains": true,
+      "path_prefix": "/base64",
+      "reason": "Remote payload decoding/retrieval; not classified as a mutating endpoint."
+    },
+    {
+      "host": "web.archive.org",
+      "include_subdomains": true,
+      "path_prefix": "/save",
+      "reason": "Save Page Now initiates collection against another host."
+    }
+  ]
+}

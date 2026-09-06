@@ -1,6 +1,8 @@
 # Provenance records
 
-Optional record contract for the [shared research guidance](README.md).
+For archive maintainers and linked agent runs. Ordinary contributions use
+[the three-line header](README.md); missing fields do not make them unwelcome.
+These records are optional and do not certify evidence or replace review.
 The record type and schema identity remain `evidence/provenance` 0.1.
 Three artifact roles, four claim grades and a small JSON record.
 
@@ -49,6 +51,9 @@ defines required fields and rejects unknown ones:
   `cites` links claim support. Use `sha256:<hash>` or `msg:<Discord message ID>`;
   citations also allow `url:<HTTP(S) URL>` except for `demonstrated` claims.
   Message IDs must resolve to captured versions, not merely live messages.
+  Existing Discord databases can supply message bodies and locators. Inspect
+  collection method, retained versions and raw-response availability before
+  classifying them; a normalized SQLite row is not automatically original bytes.
   Bind selectors to hashes; for Git sources, hash the file bytes and retain
   repository, revision and path.
 - `captured_by` labels a collector (tool or person); keep the accountable

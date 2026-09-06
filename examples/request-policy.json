@@ -1,0 +1,27 @@
+{
+  "description": "Offline matcher cases only; never fetch these URLs. not_matched still requires an explicit allow decision.",
+  "deny": [
+    "https://api.counterapi.dev/example/example/up",
+    "http://API.COUNTERAPI.DEV.:8080/example",
+    "https://sub.api.counterapi.dev/example",
+    "https://countapi.mileshilliard.com/example",
+    "https://vanderbi.lt/example",
+    "https://vanderbi.lt/admin/",
+    "https://httpbin.org/base64/ZXhhbXBsZQ==",
+    "https://httpbin.org/%62ase64/ZXhhbXBsZQ==",
+    "https://web.archive.org/save/https://example.org/",
+    "https://web.archive.org/save?url=https://example.org/"
+  ],
+  "not_matched": [
+    "https://example.org/",
+    "https://api.counterapi.dev.example.org/",
+    "https://notvanderbi.lt/",
+    "https://httpbin.org/status/200",
+    "https://web.archive.org/web/20200101000000/https://example.org/"
+  ],
+  "deny_or_reject": [
+    "https://web.archive.org/%2573ave/https://example.org/",
+    "https://httpbin.org/a/../base64/example",
+    "https://httpbin.org/a%2f..%2fbase64/example"
+  ]
+}
